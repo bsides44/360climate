@@ -17,8 +17,6 @@ AFRAME.registerComponent('policy-click', {
             const wowText = document.querySelector("#wowText")
             wowText.setAttribute('visible', 'true')
             document.querySelector("#nzText").setAttribute('visible', 'true')
-
-
         })
     },
 })

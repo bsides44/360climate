@@ -15,7 +15,7 @@ AFRAME.registerComponent('city-hover', {
 
             //visible policy button in city
             value = meter.getAttribute("theta-length")
-            if (value >= 21) {
+            if (value >= 25) {
                 policyButton.setAttribute("visible", "true")
                 document.querySelector("#scaleButton").setAttribute("visible", "false")
             }
