@@ -9,10 +9,10 @@ AFRAME.registerComponent('policy-click', {
 
             cityLights.forEach(el => {
                 el.setAttribute('material', 'color', '#4f4d45');
-                sceneEl.emit('turn-off')
             });
 
             sceneEl.emit('changeMeter', 100)
+            sceneEl.emit('turn-off')
         })
     },
 })

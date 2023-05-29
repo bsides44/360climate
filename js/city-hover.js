@@ -23,7 +23,6 @@ AFRAME.registerComponent('city-hover', {
         })
 
         sceneEl.addEventListener('turn-off', () => {
-            console.log('turn off')
             this.data.turnOff = true
         })
     },
