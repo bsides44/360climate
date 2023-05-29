@@ -13,6 +13,12 @@ AFRAME.registerComponent('policy-click', {
 
             sceneEl.emit('changeMeter', 100)
             sceneEl.emit('turn-off')
+
+            const wowText = document.querySelector("#wowText")
+            wowText.setAttribute('visible', 'true')
+            document.querySelector("#nzText").setAttribute('visible', 'true')
+
+
         })
     },
 })

@@ -7,11 +7,18 @@ AFRAME.registerComponent('scale-click', {
 
         // change color of light on click 
         button.addEventListener('click', () => {
-            bgImage.setAttribute('src', '#city');
 
             bedLights.forEach(el => {
                 el.parentNode.removeChild(el);
             });
+
+            var cameraTint = document.querySelector("#cameraTint")
+            cameraTint.parentNode.removeChild(cameraTint);
+
+            var cameraRot = document.querySelector("#cameraRot")
+            cameraRot.setAttribute('rotation', { x: 0, y: 0, z: 0 })
+            cameraRot.object3D.rotation.y -= 110
+            bgImage.setAttribute('src', '#city');
 
             // generate city lights
             for (let index = 0; index < 400; index++) {

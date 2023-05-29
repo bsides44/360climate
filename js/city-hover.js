@@ -1,6 +1,6 @@
 AFRAME.registerComponent('city-hover', {
     schema: {
-        turnOff: { type: 'boolean', default: 'false' }
+        turnOff: { type: 'boolean', default: false }
     },
     init: function () {
         var el = this.el
@@ -11,15 +11,14 @@ AFRAME.registerComponent('city-hover', {
         // change colour of light on controller hover 
         el.addEventListener('raycaster-intersected', () => {
             el.setAttribute('material', 'color', '#4f4d45');
-            if (!this.data.turnOff) {
-                console.log('turn off is false')
-
-                sceneEl.emit('changeMeter', 1)
-            }
+            if (!this.data.turnOff) sceneEl.emit('changeMeter', 1)
 
             //visible policy button in city
             value = meter.getAttribute("theta-length")
-            if (value >= 21) policyButton.setAttribute("visible", "true")
+            if (value >= 21) {
+                policyButton.setAttribute("visible", "true")
+                document.querySelector("#scaleButton").setAttribute("visible", "false")
+            }
         })
 
         sceneEl.addEventListener('turn-off', () => {
