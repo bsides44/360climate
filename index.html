@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Climaction</title>
+    <meta name="description" content="Interactive 360 climate game using aframe for webxr">
+    <script src="https://aframe.io/releases/1.4.1/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+    <script src="./js/light-click.js"></script>
+    <script src="./js/change-meter.js"></script>
+    <script src="./js/scale-click.js"></script>
+    <script src="./js/on-hover.js"></script>
+    <script src="./js/city-hover.js"></script>
+    <script src="./js/policy-click.js"></script>
+
+</head>
+
+<body>
+    <a-scene id="scene" loading-screen="dotsColor: black; backgroundColor: white" shadow="enabled; autoUpdate: true" change-meter>
+        <a-assets timeout="5000">
+            <img id="room" src="./assets/room.jpeg">
+            <img id="city" src="./assets/city.jpg">
+        </a-assets>
+
+        <!-- BG IMAGE -->
+        <a-sky id="skyImage" src="#room"></a-sky>
+
+        <!-- ROOM LIGHTS -->
+        <a-sphere position="7 -5 -3.5" radius="0.6" color="#fcca03" class="clickable bedLight" light-click on-hover="changeColor: #d1a804; originalColor: #fcca03"></a-sphere>
+        <a-sphere position="10 -3 10" radius="0.6" color="#fcca03" class="clickable bedLight" light-click on-hover="changeColor: #d1a804; originalColor: #fcca03"></a-sphere>
+        <a-sphere position="4 -2 10" radius="0.6" color="#fcca03" class="clickable bedLight" light-click on-hover="changeColor: #d1a804; originalColor: #fcca03"></a-sphere>
+        <a-sphere position="-10 -9 12" radius="0.6" color="#fcca03" class="clickable bedLight" light-click on-hover="changeColor: #d1a804; originalColor: #fcca03"></a-sphere>
+        <a-sphere position="-13.2 -4.2 -2" radius="0.6" color="#fcca03" class="clickable bedLight" light-click on-hover="changeColor: #d1a804; originalColor: #fcca03"></a-sphere>
+
+        <!-- CITY LIGHTS INSERTED DYNAMICALLY IN SCALE-CLICK-->
+
+        <a-camera position="0 -5 0">
+            <!-- REDUCTOMETER -->
+            <a-circle id="meter-back" position="-2.5 -2.1 -3" radius="0.8" color="#4CC3D9" theta-length="180"> </a-circle>
+            <a-circle id="meter" position="-2.5 -2.1 -3" radius="0.8" color="#EF2D5E" theta-length="10" theta-start="170"> </a-circle>
+            <a-text id="meterText" value="EMISSIONS\nREDUCTOMETER" position="-2.5 -2.3 -3" align="center" width="4"></a-text>
+
+            <!-- SCALE BUTTON -->
+            <a-plane id="scaleButton" position="0 -1.7 -3" radius="0.8" rotation="0 0 0" color="#EF2D5E" height="0.8" width="1.8" visible="false" class="clickable" scale-click on-hover="changeColor: #610d1f; originalColor: #EF2D5E">
+                <a-text id="scaleText" value="SCALE\nUP" align="center" width="5"></a-text>
+            </a-plane>
+
+            <!-- POLICY BUTTON -->
+            <a-plane id="policyButton" position="2 -1.7 -3" radius="0.8" rotation="0 0 0" color="#4CC3D9" height="0.8" width="1.8" visible="false" class="clickable" policy-click on-hover="changeColor: #317f8c; originalColor: #4CC3D9">
+                <a-text id="policyText" value="POLICY!" align="center" width="5"></a-text>
+            </a-plane>
+        </a-camera>
+
+        <!-- CONTROLS -->
+        <a-entity cursor="rayOrigin: mouse" raycaster="objects: .clickable">
+        </a-entity>
+    </a-scene>
+</body>
+
+</html>
