@@ -1,0 +1,12 @@
+{
+  "name": "360climate",
+  "version": "1.0.0",
+  "description": "An experiment in using interactive 360 degree aframe to prompt systemic climate action",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "five-server --port=8000"
+  },
+  "author": "",
+  "license": "ISC"
+}
