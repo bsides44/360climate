@@ -19,6 +19,7 @@
     <script src="./js/city-hover.js"></script>
     <script src="./js/policy-click.js"></script>
     <script src="./js/intro-click.js"></script>
+    <script src="./js/end-click.js"></script>
 
 </head>
 
@@ -50,27 +51,35 @@
                 <!-- CITY TEXT-->
                 <a-text id="cityText" value="TURN OFF EVERY\nTINY LIGHT" position="0 0 -1" align="center" font="monoid" width="6" visible="false"></a-text>
 
-                <!-- ACTION TEXT-->
-                <a-text id="actionText" value="SYSTEMIC CHANGE >\nINDIVIDUAL ACTION" position="0 0 -1" align="center" font="monoid" width="5" visible="false"></a-text>
-
-                <!-- ACTION TEXT-->
-                <a-text id="plasticText" value="END PLASTIC" position="0 0.2 -1" align="center" font="monoid" width="6" visible="false"></a-text>
-                <a-text id="organicText" value="SUBSIDISE ORGANICS" position="0 0.2 -1" align="center" font="monoid" width="5" visible="false"></a-text>
-                <a-text id="wetlandText" value="PROTECT WETLANDS" position="0 0.2 -1" align="center" font="monoid" width="5.5" visible="false"></a-text>
-                <a-text id="oilText" value="END OIL" position="0 0.2 -1" align="center" font="monoid" width="6" visible="false"></a-text>
-                <a-text id="homeText" value="ELECTRIC HOMES" position="0 0.2 -1" align="center" font="monoid" width="6" visible="false"></a-text>
-                <a-text id="nowText" value="NOW" position="0 -0.1 -1" align="center" font="monoid" width="6" visible="false"></a-text>
-
-
-                <!-- REDUCTOMETER -->
-                <a-circle id="meter-back" position="-2.5 -2.1 -3" radius="0.6" color="#EF2D5E" theta-length="180"> </a-circle>
-                <a-circle id="meter" position="-2.5 -2.1 -3" radius="0.6" color="#4CC3D9" theta-length="170" theta-start="0" animation="property: geometry.thetaLength; to: 60; dur: 1000; easing: linear; loop: false; startEvents: increaseMeter" > </a-circle>
-                <a-text id="meterText" value="EMISSIONS\nREDUCTOMETER" position="-2.5 -2.3 -3" align="center" font="monoid" width="4"></a-text>
-
                 <!-- WOW TEXT-->
                 <a-text id="wowText" value="WOW!" position="-0.75 -0.2 -1" align="center" font="monoid" width="8" visible="false"></a-text>
                 <a-text id="nzText" value="   NZ'S\n<- CLIMATE" position="-0.435 -0.665 -1" align="center" font="monoid" width="1" visible="false"></a-text>
                 <a-text id="nzTextClimate" value="TARGET" position="-0.41 -0.74 -1" align="center" font="monoid" width="1" visible="false"></a-text>
+                
+                <!-- ACTION TEXT-->
+                <a-text id="actionText" value="SYSTEMS CHANGE >\nINDIVIDUAL ACTION" position="0 0 -1" align="center" font="monoid" width="5" visible="false"></a-text>
+
+                <!-- ACTION TEXT-->
+                <a-text class="action" id="actionOne" value="END DRILLING" position="0 0.2 -1" align="center" font="monoid" width="6" visible="false"></a-text>
+                <a-text class="action" id="actionTwo" value="MORE SOLAR" position="0 0.2 -1" align="center" font="monoid" width="6" visible="false"></a-text>
+                <a-text class="action" id="actionThree" value="PUBLIC TRANSPORT" position="0 0.2 -1" align="center" font="monoid" width="6" visible="false"></a-text>
+                <a-text class="action" id="actionFour" value="GENTLE FARMING" position="0 0.2 -1" align="center" font="monoid" width="6" visible="false"></a-text>
+                <a-text class="action" id="actionFive" value="STRONGER ETS" position="0 0.2 -1" align="center" font="monoid" width="6" visible="false"></a-text>
+                <a-text class="action" id="actionSix" value="RESPECT FLOODZONES" position="0 0.2 -1" align="center" font="monoid" width="6" visible="false"></a-text>
+                <a-text class="action" id="actionSeven" value="SUPPORT PACIFIC" position="0 0.2 -1" align="center" font="monoid" width="6" visible="false"></a-text>
+                <a-text class="action" id="actionEight" value="REFOREST" position="0 0.2 -1" align="center" font="monoid" width="6" visible="false"></a-text>
+                <a-text class="action" id="actionNine" value="PROTECT OCEANS" position="0 0.2 -1" align="center" font="monoid" width="6" visible="false"></a-text>
+                <a-text class="action" id="actionTen" value="GROW WETLANDS" position="0 0.2 -1" align="center" font="monoid" width="6" visible="false"></a-text>
+                
+                <!-- NOW -->
+                <!-- <a-plane id="nowButton" position="0 -0.1 -1" visible="false" width="0.6" height="0.5" class="clickable" color="rgba(255, 255, 255, 0)" end-click>
+                </a-plane>
+                <a-text id="nowText" value="NOW" position="0 -0.1 -1" visible="false" align="center" font="monoid" width="8" ></a-text> -->
+                
+                <!-- REDUCTOMETER -->
+                <a-circle id="meter-back" position="-2.5 -2.1 -3" radius="0.6" color="#EF2D5E" theta-length="180"> </a-circle>
+                <a-circle id="meter" position="-2.5 -2.1 -3" radius="0.6" color="#4CC3D9" theta-length="170" theta-start="0" animation="property: geometry.thetaLength; to: 60; dur: 1000; easing: linear; loop: false; startEvents: increaseMeter" > </a-circle>
+                <a-text id="meterText" value="EMISSIONS\nREDUCTOMETER" position="-2.5 -2.3 -3" align="center" font="monoid" width="4"></a-text>
 
                 <!-- SCALE BUTTON -->
                 <a-plane id="scaleButton" position="0 -1.7 -3" color="#EF2D5E" height="0.8" width="1.8" visible="false" class="clickable" scale-click on-hover="changeColor: #610d1f; originalColor: #EF2D5E">

@@ -22,54 +22,76 @@ AFRAME.registerComponent('policy-click', {
         
         sceneEl.emit('turn-off')
 
-        document.querySelector("#nzText").setAttribute('visible', 'true')
-        document.querySelector("#nzTextClimate").setAttribute('visible', 'true')
+        document.querySelector("#nzText").object3D.visible = true;
+        document.querySelector("#nzTextClimate").object3D.visible = true;
+
+        let actionArr = Array.from(document.querySelectorAll(".action"))
 
         // change text
         const wowText = document.querySelector("#wowText")
-        const actionText = document.querySelector("#actionText")
-        const plasticText = document.querySelector("#plasticText")
-        const organicText = document.querySelector("#organicText")
-        const wetlandText = document.querySelector("#wetlandText")
-        const oilText = document.querySelector("#oilText")
-        const homeText = document.querySelector("#homeText")
-        const nowText = document.querySelector("#nowText")
-
+        const actionText = document.querySelector("#actionText")  
+        // const nowText = document.querySelector("#nowText")
 
         setTimeout(() => {     
-            wowText.setAttribute('visible', 'true')
+            wowText.object3D.visible = true;
         }, 100);
         setTimeout(() => {
-            wowText.setAttribute('visible', 'false')
-            actionText.setAttribute('visible', 'true')
-        }, 3000);
+            wowText.object3D.visible = false;
+            actionText.object3D.visible = true;
+        }, 2000);
+        setTimeout(() => {
+            actionText.object3D.visible = false;
+            turnOnEachAction(actionArr).then(_ => {
+                // this code will run after all actions have been shown.
+                // setTimeout(() => {
+                //     nowText.object3D.visible = false;
+                // }, 2000);
+            });
+        }, 4000);
 
         setTimeout(() => {
-            nowText.setAttribute('visible', 'true')
-            actionText.setAttribute('visible', 'false')
-            plasticText.setAttribute('visible', 'true')
-        }, 6000);
-        setTimeout(() => {
-            plasticText.setAttribute('visible', 'false')
-            organicText.setAttribute('visible', 'true')
-        }, 6500);
-        setTimeout(() => {
-            organicText.setAttribute('visible', 'false')
-            wetlandText.setAttribute('visible', 'true')
-        }, 7000);
-        setTimeout(() => {
-            wetlandText.setAttribute('visible', 'false')
-            oilText.setAttribute('visible', 'true')
-        }, 7500);
-        setTimeout(() => {
-            oilText.setAttribute('visible', 'false')
-            homeText.setAttribute('visible', 'true')
-        }, 8000);
-        setTimeout(() => {
-            homeText.setAttribute('visible', 'false')
-            nowText.setAttribute('visible', 'false')
-        }, 9000);
+            // position and end-click aren't getting added
+            // intro-click modile UI needs updating
+            var nowText = document.createElement('a-text');
+            nowText.setAttribute("id", "nowText");
+            nowText.setAttribute("value", "NOW");
+            nowText.object3D.position.set(0, -0.1, -1)
+            nowText.object3D.visible = true;
+            nowText.setAttribute("visible", "true");
+            nowText.setAttribute("align", "center");
+            nowText.setAttribute("font", "monoid");
+            nowText.setAttribute("width", "8");
 
+            var nowButton = document.createElement('a-plane');
+            nowButton.setAttribute("id", "nowButton");
+            nowButton.setAttribute('position', {x: 0, y: -0.1, z: -1});
+            nowButton.object3D.visible = false;
+            nowButton.setAttribute("width", "0.6");
+            nowButton.setAttribute("height", "0.5");
+            nowButton.setAttribute("class", "clickable");
+            nowButton.setAttribute("end-click");
+
+            sceneEl.appendChild(nowButton);
+            sceneEl.appendChild(nowText);
+        }, 10000);
+        
+        function actionAfterTwoSeconds(action) {
+            return new Promise(res => {
+                setTimeout(_ => {
+                    action.object3D.visible = true;
+                    res();
+                }, 500);
+                setTimeout(_ => {
+                    action.object3D.visible = false;
+                    res();
+                }, 1000);
+            });
+        }
+        
+        function turnOnEachAction(arr) {
+            let action = arr.shift();
+            return action ? actionAfterTwoSeconds(action).then(turnOnEachAction.bind(null, arr)) : Promise.resolve();
+        }
         
         el.removeEventListener('click', this.onClick)
 
